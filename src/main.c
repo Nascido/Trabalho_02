@@ -22,6 +22,7 @@ int main() {
     process_init_list();
 
     while (running) {
+        system("clear");
         printf("\nMenu:\n");
         printf("1. Criar processo\n");
         printf("2. Listar processos\n");
@@ -33,6 +34,7 @@ int main() {
         getchar(); // Limpa buffer
         switch (opt) {
             case 1:
+                system("clear");
                 printf("ID do processo: ");
                 fgets(id, sizeof(id), stdin);
                 id[strcspn(id, "\n")] = 0;
@@ -43,11 +45,17 @@ int main() {
                     printf("Processo criado com sucesso!\n");
                 else
                     printf("Erro ao criar processo.\n");
+                printf("Pressione ENTER para continuar...");
+                getchar();
                 break;
             case 2:
+                system("clear");
                 print_processes();
+                printf("Pressione ENTER para continuar...");
+                getchar();
                 break;
             case 3:
+                system("clear");
                 printf("ID do processo a remover: ");
                 fgets(id, sizeof(id), stdin);
                 id[strcspn(id, "\n")] = 0;
@@ -55,9 +63,14 @@ int main() {
                     printf("Processo removido.\n");
                 else
                     printf("Processo não encontrado.\n");
+                printf("Pressione ENTER para continuar...");
+                getchar();
                 break;
             case 4:
+                system("clear");
                 print_memory();
+                printf("Pressione ENTER para continuar...");
+                getchar();
                 break;
             case 0:
                 running = 0;
