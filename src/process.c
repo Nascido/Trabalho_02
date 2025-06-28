@@ -3,35 +3,39 @@
 #include <stdlib.h>
 #include <string.h>
 
+// Ponteiro para o início da lista encadeada de processos
 static Process *process_list_head = NULL;
 
+// Inicializa a lista de processos (define como vazia)
 void process_init_list() {
     process_list_head = NULL;
 }
 
+// Cria um novo processo, aloca memória lógica e tabela de páginas, e insere na lista
 Process* create_process(const char *id, size_t size) {
-    Process *proc = (Process*)malloc(sizeof(Process));
+    Process *proc = (Process*)malloc(sizeof(Process)); // Aloca struct do processo
     if (!proc) return NULL;
-    strncpy(proc->id, id, MAX_PROCESS_ID_LEN);
+    strncpy(proc->id, id, MAX_PROCESS_ID_LEN); // Copia o ID
     proc->id[MAX_PROCESS_ID_LEN-1] = '\0';
     proc->size = size;
-    proc->logical_memory = (uint8_t*)malloc(size);
+    proc->logical_memory = (uint8_t*)malloc(size); // Aloca memória lógica do processo
     if (!proc->logical_memory) {
         free(proc);
         return NULL;
     }
     size_t num_pages = size / 4096 + (size % 4096 != 0); // Exemplo: 4096 bytes por página
-    proc->page_table = create_page_table(num_pages);
+    proc->page_table = create_page_table(num_pages); // Cria tabela de páginas
     if (!proc->page_table) {
         free(proc->logical_memory);
         free(proc);
         return NULL;
     }
-    proc->next = process_list_head;
+    proc->next = process_list_head; // Insere no início da lista
     process_list_head = proc;
     return proc;
 }
 
+// Procura um processo pelo ID na lista
 Process* find_process(const char *id) {
     for (Process *p = process_list_head; p != NULL; p = p->next) {
         if (strncmp(p->id, id, MAX_PROCESS_ID_LEN) == 0) {
@@ -41,6 +45,7 @@ Process* find_process(const char *id) {
     return NULL;
 }
 
+// Exibe todos os processos e suas tabelas de páginas
 void print_processes() {
     printf("Lista de Processos:\n");
     for (Process *p = process_list_head; p != NULL; p = p->next) {
@@ -49,6 +54,7 @@ void print_processes() {
     }
 }
 
+// Libera toda a memória de um processo
 void free_process(Process *proc) {
     if (!proc) return;
     free(proc->logical_memory);
@@ -56,6 +62,7 @@ void free_process(Process *proc) {
     free(proc);
 }
 
+// Libera toda a lista de processos
 void cleanup_process_list() {
     Process *p = process_list_head;
     while (p) {
