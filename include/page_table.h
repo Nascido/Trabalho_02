@@ -3,9 +3,13 @@
 
 #include <stddef.h>
 
+typedef struct PageEntry {
+    int frame_number; // Número do quadro físico
+} PageEntry;
+
 typedef struct PageTable {
-    int *frame_indices; // page -> frame
-    size_t num_pages;
+    PageEntry *entries; // Array de entradas da tabela de páginas
+    size_t num_pages;   // Número de páginas
 } PageTable;
 
 PageTable* create_page_table(size_t num_pages);
