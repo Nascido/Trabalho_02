@@ -27,6 +27,12 @@ void process_set_max_size(size_t max_size) {
 
 // Cria um novo processo, aloca memória lógica e tabela de páginas, e insere na lista
 Process* create_process(const char *id, size_t size) {
+
+    if (find_process(id) != NULL) {
+        fprintf(stderr, "Erro: já existe um processo com o ID '%s'\n", id);
+        return NULL;
+    }
+
     // Validação do tamanho do processo
     if (max_process_size > 0 && size > max_process_size) {
         return NULL; // Tamanho excede o máximo permitido
