@@ -29,6 +29,10 @@ int main() {
         if (!is_power_of_two(frame_size)) {
             printf("Erro: O tamanho do quadro deve ser uma potência de dois!\n");
         }
+        if (frame_size > mem_size) {
+            printf("Erro: O tamanho do quadro não pode ser maior que a memória física!\n");
+            frame_size = 0; // Force loop continuation
+        }
     } while (!is_power_of_two(frame_size));
     
     do {
@@ -41,6 +45,7 @@ int main() {
             printf("Erro: O tamanho máximo de processo não pode ser maior que a memória física!\n");
             max_process_size = 0; // Force loop continuation
         }
+        
     } while (!is_power_of_two(max_process_size) || max_process_size > mem_size);
     
     memory_init(mem_size, frame_size); 
