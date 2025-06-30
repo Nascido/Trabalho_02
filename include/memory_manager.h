@@ -10,6 +10,7 @@ void memory_cleanup();
 int allocate_frame();
 void free_frame(int frame_idx);
 size_t get_free_frames_count();
+int memory_has_enough_frames(size_t process_size);
 void print_memory();
 
 #endif // MEMORY_MANAGER_H

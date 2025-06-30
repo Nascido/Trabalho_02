@@ -7,40 +7,40 @@ Este arquivo lista, por módulo, os pontos que precisam ser corrigidos, implemen
 ---
 
 ## main.c
-- [ ] Permitir configuração do tamanho máximo de processo (ler do usuário no início).
-- [ ] Validar se os tamanhos informados (memória física, quadro, máximo de processo) são potências de dois.
-- [ ] Adicionar opção no menu para visualizar tabela de páginas de um processo específico (solicitar ID, mostrar tamanho e mapeamento página-quadro).
-- [ ] Exibir mensagem de erro se o tamanho do processo informado exceder o máximo permitido.
-- [ ] Exibir mensagem de erro se não houver memória suficiente para criar o processo.
-- [ ] Passar o tamanho do quadro/página corretamente para todos os módulos (não fixar em 4096).
+- [x] Permitir configuração do tamanho máximo de processo (ler do usuário no início).
+- [x] Validar se os tamanhos informados (memória física, quadro, máximo de processo) são potências de dois.
+- [x] Adicionar opção no menu para visualizar tabela de páginas de um processo específico (solicitar ID, mostrar tamanho e mapeamento página-quadro).
+- [x] Exibir mensagem de erro se o tamanho do processo informado exceder o máximo permitido.
+- [x] Exibir mensagem de erro se não houver memória suficiente para criar o processo.
+- [x] Passar o tamanho do quadro/página corretamente para todos os módulos (não fixar em 4096).
 
 ---
 
 ## memory_manager.c / memory_manager.h
-- [ ] Garantir que o tamanho do quadro e da memória física são potências de dois.
+- [x] Garantir que o tamanho do quadro e da memória física são potências de dois.
 - [ ] Implementar função para exibir o conteúdo de cada quadro da memória física (não apenas o mapa de ocupação).
-- [ ] Exibir o percentual de memória livre (não apenas a contagem de quadros livres).
+- [x] Exibir o percentual de memória livre (não apenas a contagem de quadros livres).
 
 ---
 
 ## process.c / process.h
-- [ ] Corrigir a criação da tabela de páginas: o tamanho da página/quadro deve ser dinâmico (não fixo em 4096).
-- [ ] Validar tamanho do processo na criação (não permitir maior que o máximo).
-- [ ] Inicializar a memória lógica do processo com valores aleatórios.
-- [ ] Verificar disponibilidade de quadros antes de criar o processo.
-- [ ] Implementar função para exibir a tabela de páginas de um processo específico (ID, tamanho, mapeamento página-quadro).
-- [ ] Implementar função para liberar os quadros ocupados ao remover um processo.
+- [x] Corrigir a criação da tabela de páginas: o tamanho da página/quadro deve ser dinâmico (não fixo em 4096).
+- [x] Validar tamanho do processo na criação (não permitir maior que o máximo).
+- [x] Inicializar a memória lógica do processo com valores aleatórios.
+- [x] Verificar disponibilidade de quadros antes de criar o processo.
+- [x] Implementar função para exibir a tabela de páginas de um processo específico (ID, tamanho, mapeamento página-quadro).
+- [x] Implementar função para liberar os quadros ocupados ao remover um processo.
 
 ---
 
 ## page_table.c / page_table.h
-- [ ] Garantir que a estrutura da tabela de páginas não inclua bits auxiliares.
-- [ ] Permitir inicialização da tabela de páginas com tamanho dinâmico (conforme tamanho do quadro).
+- [x] Garantir que a estrutura da tabela de páginas não inclua bits auxiliares.
+- [x] Permitir inicialização da tabela de páginas com tamanho dinâmico (conforme tamanho do quadro).
 
 ---
 
 ## utils.c / utils.h
-- [ ] Usar as funções de validação de potência de dois em todas as entradas relevantes.
+- [x] Usar as funções de validação de potência de dois em todas as entradas relevantes.
 
 ---
 
